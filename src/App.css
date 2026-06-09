@@ -1,78 +1,206 @@
 /**
- * CLASS RETENTION MFE - STYLES
+ * CLASS RETENTION MFE - REDESIGNED STYLES
+ * Based on bycs.de design system
  * 
  * Organization:
- * 1. ROOT & LAYOUT
- * 2. HERO / HOME PAGE
- * 3. PANEL & HEADERS
+ * 1. LAYOUT & CONTAINER
+ * 2. HEADER & NAVIGATION
+ * 3. BUTTONS & INTERACTIVE
  * 4. CARDS & CONTAINERS
- * 5. NAVIGATION & TABS
- * 6. FORMS & CONTROLS
- * 7. DATASET LAYOUT
- * 8. CHARTS
- * 9. LEGEND
- * 10. INFO & DATA DISPLAYS
- * 11. SCHOOL TYPE CARDS
- * 12. STORIES & TEXT
- * 13. MISCELLANEOUS & UTILITIES
- * 14. RESPONSIVE
+ * 5. HERO & HOME PAGE
+ * 6. PANELS & SECTIONS
+ * 7. FORMS & CONTROLS
+ * 8. CHARTS & DATA
+ * 9. INFO & TEXT
+ * 10. RESPONSIVE
  */
 
-/* ========================
-   1. ROOT & LAYOUT
-   ======================== */
+/* ==========================================
+   1. LAYOUT & CONTAINER
+   ========================================== */
 
 .class-retention-mfe {
+  width: 100%;
+  min-height: 100svh;
+  background: var(--class-retention-bg);
+}
+
+.class-retention-mfe__root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.class-retention-mfe__container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
   width: 100%;
 }
 
 .class-retention-mfe__panel {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  max-width: 100%;
 }
 
-/* ========================
-   2. HERO / HOME PAGE
-   ======================== */
+/* ==========================================
+   2. HEADER & NAVIGATION
+   ========================================== */
+
+.class-retention-mfe__header {
+  position: sticky;
+  top: 0;
+  background: var(--class-retention-white);
+  border-bottom: 1px solid var(--class-retention-border);
+  z-index: 1000;
+  box-shadow: var(--class-retention-shadow-sm);
+}
+
+.class-retention-mfe__view-switch {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  border-bottom: 2px solid var(--class-retention-border);
+}
+
+.class-retention-mfe__view-tab {
+  border: none;
+  background: transparent;
+  color: var(--class-retention-text);
+  padding: var(--space-sm) 0;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  font-family: var(--class-retention-font-body);
+}
+
+.class-retention-mfe__view-tab:hover:not(.class-retention-mfe__view-tab--active) {
+  color: var(--class-retention-heading);
+}
+
+.class-retention-mfe__view-tab:focus-visible {
+  outline: 3px solid var(--class-retention-primary);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   3. BUTTONS & INTERACTIVE ELEMENTS
+   ========================================== */
+
+.btn-primary {
+  background: var(--class-retention-primary);
+  color: var(--class-retention-white);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background: var(--class-retention-primary-dark);
+  box-shadow: var(--class-retention-shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--class-retention-primary);
+  color: var(--class-retention-primary);
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--class-retention-primary-light);
+  box-shadow: var(--class-retention-shadow-sm);
+}
+
+/* ==========================================
+   4. CARDS & CONTAINERS
+   ========================================== */
+
+.card {
+  background: var(--class-retention-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid var(--class-retention-border);
+  box-shadow: var(--class-retention-shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--class-retention-shadow-md);
+  border-color: var(--class-retention-primary-light);
+}
+
+/* ==========================================
+   5. HERO & HOME PAGE
+   ========================================== */
 
 .class-retention-mfe__hero-container {
-  margin: 0 -24px -24px -24px;
-  padding: 48px 24px;
+  margin: 0 calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) calc(-1 * var(--space-md));
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(135deg, var(--class-retention-gray-100) 0%, var(--class-retention-white) 100%);
+  border-bottom: 1px solid var(--class-retention-border);
 }
 
 .class-retention-mfe__hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: var(--space-xl);
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
 }
 
 .class-retention-mfe__hero-text {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--space-md);
 }
 
 .class-retention-mfe__hero-text h2 {
   margin: 0;
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--class-retention-heading);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  font-family: var(--class-retention-font-heading);
 }
 
 .class-retention-mfe__hero-highlight {
-  color: var(--class-retention-accent);
+  color: var(--class-retention-primary);
   font-weight: 700;
 }
 
 .class-retention-mfe__hero-text p {
   margin: 0;
-  font-size: 17px;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: var(--class-retention-text);
   max-width: 60ch;
@@ -81,26 +209,27 @@
 .class-retention-mfe__hero-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 28px;
-  padding-top: 28px;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--class-retention-border);
 }
 
 .class-retention-mfe__feature {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .class-retention-mfe__feature strong {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--class-retention-heading);
+  font-family: var(--class-retention-font-heading);
 }
 
 .class-retention-mfe__feature p {
-  font-size: 13px;
+  font-size: 0.875rem;
   margin: 0;
   color: var(--class-retention-text);
 }
@@ -113,24 +242,34 @@
 
 .class-retention-mfe__hero-image svg {
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
   height: auto;
   display: block;
 }
+
+/* ==========================================
+   6. PANELS & SECTIONS
+   ========================================== */
 
 .class-retention-mfe__panel-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.class-retention-mfe__panel-header h1 {
+  margin: 0;
+  font-size: 2rem;
 }
 
 .class-retention-mfe__eyebrow {
   margin-bottom: 8px;
-  color: var(--class-retention-accent);
-  font-size: 13px;
+  color: var(--class-retention-primary);
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -139,23 +278,25 @@
 }
 
 .class-retention-mfe__info-hero-container {
-  margin: 0 -24px -24px -24px;
-  padding: 48px 24px;
+  margin: 0 calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) calc(-1 * var(--space-md));
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(135deg, var(--class-retention-gray-100) 0%, var(--class-retention-white) 100%);
+  border-bottom: 1px solid var(--class-retention-border);
 }
 
 .class-retention-mfe__info-hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: var(--space-xl);
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
 }
 
 .class-retention-mfe__info-hero-text {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--space-md);
 }
 
 .class-retention-mfe__info-hero-image {
@@ -166,7 +307,7 @@
 
 .class-retention-mfe__info-hero-image svg {
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
   height: auto;
   display: block;
 }
@@ -174,12 +315,12 @@
 .class-retention-mfe__info-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 24px;
-  padding-top: 24px;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--class-retention-border);
   border-bottom: 1px solid var(--class-retention-border);
-  padding-bottom: 24px;
+  padding-bottom: var(--space-lg);
 }
 
 .class-retention-mfe__info-feature {
@@ -189,95 +330,16 @@
 }
 
 .class-retention-mfe__info-feature strong {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--class-retention-heading);
+  font-family: var(--class-retention-font-heading);
 }
 
 .class-retention-mfe__info-feature p {
-  font-size: 13px;
+  font-size: 0.875rem;
   margin: 0;
   color: var(--class-retention-text);
-}
-
-.class-retention-mfe__chart-card,
-.class-retention-mfe__stat-card {
-  border: 1px solid var(--class-retention-border);
-  border-radius: 18px;
-  background: var(--class-retention-surface);
-  box-shadow: var(--class-retention-shadow);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.class-retention-mfe__chart-card {
-  padding: 18px;
-}
-
-.class-retention-mfe__dataset-layout {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 20px;
-  margin-bottom: 16px;
-  align-items: stretch;
-}
-
-.class-retention-mfe__dataset-left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-}
-
-.class-retention-mfe__dataset-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* ========================
-   5. NAVIGATION & TABS
-   ======================== */
-
-.class-retention-mfe__view-switch {
-  display: flex;
-  gap: 24px;
-  padding: 0;
-  align-self: flex-start;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  margin-bottom: 12px;
-}
-
-.class-retention-mfe__view-tab {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  background: transparent;
-  color: var(--class-retention-text);
-  padding: 8px 0;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.class-retention-mfe__view-tab:hover:not(.class-retention-mfe__view-tab--active) {
-  color: var(--class-retention-heading);
-  border-bottom-color: rgba(0, 141, 201, 0.3);
-}
-
-.class-retention-mfe__view-tab:focus-visible {
-  outline: 2px solid var(--class-retention-accent);
-  outline-offset: 4px;
-}
-
-.class-retention-mfe__view-tab--active {
-  background: transparent;
-  color: var(--class-retention-accent);
-  border-bottom-color: var(--class-retention-accent);
-  box-shadow: none;
-  font-weight: 600;
 }
 
 /* ========================

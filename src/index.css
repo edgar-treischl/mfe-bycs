@@ -1,22 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
 .class-retention-mfe {
-  /* Scoped CSS Custom Properties */
-  --class-retention-text: #6b6375;
-  --class-retention-heading: #08060d;
-  --class-retention-bg: #fff;
-  --class-retention-surface: #fff;
-  --class-retention-elevated: #fff;
-  --class-retention-border: #e5e4e7;
-  --class-retention-accent: #264D7F; 
-  --class-retention-grid-line: rgba(107, 99, 117, 0.18);
-  --class-retention-shadow:
-    rgba(15, 23, 42, 0.08) 0 10px 20px -12px, rgba(15, 23, 42, 0.06) 0 4px 10px -6px;
+  /* === DESIGN SYSTEM TOKENS === */
+  /* Based on bycs.de - Modern Government Portal */
 
-  --class-retention-font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --class-retention-font-heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* PRIMARY COLORS */
+  --class-retention-primary: #005ca9;
+  --class-retention-primary-dark: #004b8b;
+  --class-retention-primary-light: #e3f2fd;
 
-  /* Modern fluid typography with clamp() */
-  font: clamp(15px, 1vw + 14px, 16px) / 1.5 var(--class-retention-font-sans);
-  letter-spacing: 0.18px;
+  /* NEUTRAL COLORS */
+  --class-retention-white: #ffffff;
+  --class-retention-gray-100: #f5f7fa;
+  --class-retention-gray-200: #e6e9ed;
+  --class-retention-gray-500: #6b7280;
+  --class-retention-gray-900: #1f2937;
+
+  /* SEMANTIC COLORS */
+  --class-retention-success: #16a34a;
+  --class-retention-danger: #dc2626;
+  --class-retention-warning: #f59e0b;
+  --class-retention-chart-1: #005ca9;
+  --class-retention-chart-2: #ef7430;
+  --class-retention-chart-3: #49887a;
+
+  /* LEGACY - Mapped to new system */
+  --class-retention-text: var(--class-retention-gray-500);
+  --class-retention-heading: var(--class-retention-gray-900);
+  --class-retention-bg: var(--class-retention-white);
+  --class-retention-surface: var(--class-retention-gray-100);
+  --class-retention-elevated: var(--class-retention-white);
+  --class-retention-border: var(--class-retention-gray-200);
+  --class-retention-accent: var(--class-retention-primary);
+  --class-retention-grid-line: rgba(107, 114, 128, 0.12);
+
+  /* SHADOWS - Subtle elevation */
+  --class-retention-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --class-retention-shadow-md: 0 10px 24px rgba(0, 0, 0, 0.12);
+  --class-retention-shadow: var(--class-retention-shadow-md);
+
+  /* TYPOGRAPHY */
+  --class-retention-font-heading: 'Lexend', system-ui, sans-serif;
+  --class-retention-font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --class-retention-font-sans: var(--class-retention-font-body);
+
+  /* SPACING SCALE */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+
+  /* BORDER RADIUS */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* CONTAINER */
+  --container-max: 1200px;
+  --container-padding: 24px;
+
+  /* APPLY GLOBAL */
+  font: 1rem / 1.6 var(--class-retention-font-body);
+  letter-spacing: 0px;
   color-scheme: light;
   color: var(--class-retention-text);
   background: var(--class-retention-bg);
@@ -46,28 +92,48 @@
   background: var(--class-retention-bg);
 }
 
+/* ===================================
+   TYPOGRAPHY SCALE & HIERARCHY
+   =================================== */
+
 .class-retention-mfe h1,
-.class-retention-mfe h2 {
+.class-retention-mfe h2,
+.class-retention-mfe h3 {
   font-family: var(--class-retention-font-heading);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--class-retention-heading);
+  margin: 0;
 }
 
 .class-retention-mfe h1 {
-  margin: 0;
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  line-height: 1.05;
+  font-size: 2.5rem;
+  line-height: 1.2;
   letter-spacing: -0.04em;
 }
 
 .class-retention-mfe h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.class-retention-mfe h3 {
+  font-size: 1.375rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.class-retention-mfe h4 {
+  font-family: var(--class-retention-font-heading);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--class-retention-heading);
   margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.2;
 }
 
 .class-retention-mfe p {
   margin: 0;
+  line-height: 1.6;
 }
 
 .class-retention-mfe button,
@@ -78,54 +144,70 @@
   color: var(--class-retention-heading);
 }
 
-/* Error Boundary Styles */
+/* ===================================
+   FOCUS & ACCESSIBILITY
+   =================================== */
+
+:focus-visible {
+  outline: 3px solid var(--class-retention-primary);
+  outline-offset: 2px;
+}
+
+button,
+a {
+  min-height: 44px;
+}
+
+/* === ERROR BOUNDARY STYLES === */
 .class-retention-mfe__error-boundary {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 300px;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  border-radius: 8px;
+  background: var(--class-retention-gray-100);
+  border-radius: var(--radius-lg);
   margin: 1rem;
 }
 
 .class-retention-mfe__error-content {
-  background: white;
+  background: var(--class-retention-white);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--class-retention-shadow-sm);
   text-align: center;
   max-width: 500px;
 }
 
 .class-retention-mfe__error-title {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #e74c3c;
+  font-weight: 700;
+  color: var(--class-retention-danger);
   margin: 0 0 1rem 0;
 }
 
 .class-retention-mfe__error-message {
-  color: #666;
+  color: var(--class-retention-text);
   font-size: 1rem;
   margin: 0 0 1.5rem 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .class-retention-mfe__error-button {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--class-retention-primary);
+  color: var(--class-retention-white);
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .class-retention-mfe__error-button:hover {
-  background-color: #2980b9;
+  background-color: var(--class-retention-primary-dark);
+  box-shadow: var(--class-retention-shadow-sm);
 }
 
 .class-retention-mfe__error-button:active {
