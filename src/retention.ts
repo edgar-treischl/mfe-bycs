@@ -71,13 +71,13 @@ export const SCHOOL_TYPE_OPTIONS: SchoolTypeOption[] = [
   { key: 'IGS', label: 'Int. Gesamtschule' },
 ]
 
-// Color scheme for school types
+// Color scheme for school types - from README.md palette
 export const SCHOOL_TYPE_COLORS: Record<SchoolType, string> = {
-  'GS': '#264653',            // blue
-  'MS': '#2a9d8f',            // red
-  'RS': '#e9c46a',            // green
-  'GY': '#f4a261',            // amber
-  'IGS': '#e76f51',           // purple
+  'GS': '#264D7F',            // primary blue
+  'MS': '#EF7430',            // orange
+  'RS': '#49887A',            // teal
+  'GY': '#264D7F',            // primary blue (secondary)
+  'IGS': '#EF7430',           // orange (secondary)
 }
 
 // Chart configuration

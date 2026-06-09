@@ -20,9 +20,9 @@
   --class-retention-success: #16a34a;
   --class-retention-danger: #dc2626;
   --class-retention-warning: #f59e0b;
-  --class-retention-chart-1: #005ca9;
-  --class-retention-chart-2: #ef7430;
-  --class-retention-chart-3: #49887a;
+  --class-retention-chart-1: #264D7F;
+  --class-retention-chart-2: #EF7430;
+  --class-retention-chart-3: #49887A;
 
   /* LEGACY - Mapped to new system */
   --class-retention-text: var(--class-retention-gray-500);
