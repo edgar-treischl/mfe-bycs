@@ -62,12 +62,13 @@
 .class-retention-mfe__view-switch {
   display: flex;
   gap: var(--space-lg);
-  padding: var(--space-md) 0;
-  align-self: flex-start;
+  padding: var(--space-md) var(--space-md);
+  align-self: stretch;
   background: transparent;
   border: none;
   box-shadow: none;
   margin-bottom: 0;
+  margin: 0 calc(-1 * var(--space-md)) 0 calc(-1 * var(--space-md));
   border-bottom: 3px solid var(--class-retention-border);
 }
 
