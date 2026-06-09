@@ -75,13 +75,13 @@ function DimensionalDataViewComponent({
 
   return (
     <>
-      <section className="class-retention-mfe__dataset-layout">
-        <div className="class-retention-mfe__dataset-left">
-          <div className="class-retention-mfe__chart-card">
-            <div className="class-retention-mfe__card-heading"></div>
+      <section className="bycs-mfe__dataset-layout">
+        <div className="bycs-mfe__dataset-left">
+          <div className="bycs-mfe__chart-card">
+            <div className="bycs-mfe__card-heading"></div>
 
             {/* Year selection */}
-            <div className="class-retention-mfe__controls-section">
+            <div className="bycs-mfe__controls-section">
               <YearSelect
                 selectedYear={selectedYear}
                 onYearChange={onYearChange}
@@ -89,7 +89,7 @@ function DimensionalDataViewComponent({
               />
             </div>
 
-            <div className="class-retention-mfe__chart-frame">
+            <div className="bycs-mfe__chart-frame">
               <StackedBarChart
                 data={yearData}
                 year={selectedYear}
@@ -101,7 +101,7 @@ function DimensionalDataViewComponent({
           </div>
         </div>
 
-        <div className="class-retention-mfe__dataset-right">
+        <div className="bycs-mfe__dataset-right">
           <InterpretationBox tabs={interpretationTabs} defaultTab="befund" title="Interpretation" />
         </div>
       </section>

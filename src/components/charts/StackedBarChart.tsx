@@ -61,7 +61,7 @@ function StackedBarChartComponent({
   return (
     <svg
       viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
-      className="class-retention-mfe__chart"
+      className="bycs-mfe__chart"
       role="img"
       aria-label={ariaLabel}
     >
@@ -75,13 +75,13 @@ function StackedBarChartComponent({
               x2={x}
               y1={CHART_PADDING.top}
               y2={CHART_HEIGHT - CHART_PADDING.bottom}
-              className="class-retention-mfe__grid-line"
+              className="bycs-mfe__grid-line"
             />
             <text
               x={x}
               y={CHART_HEIGHT - CHART_PADDING.bottom + 24}
               textAnchor="middle"
-              className="class-retention-mfe__axis-label"
+              className="bycs-mfe__axis-label"
             >
               {tick}%
             </text>
@@ -95,14 +95,14 @@ function StackedBarChartComponent({
         x2={CHART_WIDTH - CHART_PADDING.right}
         y1={CHART_HEIGHT - CHART_PADDING.bottom}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
       <line
         x1={CHART_PADDING.left}
         x2={CHART_PADDING.left}
         y1={CHART_PADDING.top}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
 
       {/* Axis labels */}
@@ -110,7 +110,7 @@ function StackedBarChartComponent({
         x={CHART_WIDTH / 2}
         y={CHART_HEIGHT - 10}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
         Anteil Wiederholer (%) {year ? `im Jahr ${year}` : ''}
@@ -119,7 +119,7 @@ function StackedBarChartComponent({
         x={15}
         y={CHART_HEIGHT / 2}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         transform={`rotate(-90 15 ${CHART_HEIGHT / 2})`}
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
@@ -146,7 +146,7 @@ function StackedBarChartComponent({
               x={CHART_PADDING.left - 10}
               y={startY + barHeight / 2 + 4}
               textAnchor="end"
-              className="class-retention-mfe__axis-label"
+              className="bycs-mfe__axis-label"
               style={{ fontSize: '18px', fontWeight: 600 }}
             >
               {schoolType}
@@ -177,7 +177,7 @@ function StackedBarChartComponent({
                       x={segmentX + width / 2}
                       y={startY + barHeight / 2 + 4}
                       textAnchor="middle"
-                      className="class-retention-mfe__bar-label"
+                      className="bycs-mfe__bar-label"
                       style={{
                         fontSize: '14px',
                         fontWeight: 600,
@@ -203,13 +203,13 @@ function StackedBarChartComponent({
  */
 function StackedBarChartLegendComponent({ legendItems, label }: { legendItems: Array<{ label: string; color: string }>; label?: string }) {
   return (
-    <div className="class-retention-mfe__chart-legend">
-      {label && <div className="class-retention-mfe__legend-label">{label}</div>}
-      <ul className="class-retention-mfe__legend-list">
+    <div className="bycs-mfe__chart-legend">
+      {label && <div className="bycs-mfe__legend-label">{label}</div>}
+      <ul className="bycs-mfe__legend-list">
         {legendItems.map((item) => (
           <li key={item.label}>
             <span
-              className="class-retention-mfe__legend-swatch"
+              className="bycs-mfe__legend-swatch"
               style={{ backgroundColor: item.color }}
             />
             {item.label}

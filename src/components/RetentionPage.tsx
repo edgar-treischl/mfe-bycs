@@ -42,10 +42,10 @@ function RetentionViewComponent({
       label: 'Befund',
       content: (
         <div>
-          <p className="class-retention-mfe__story-text">
+          <p className="bycs-mfe__story-text">
             Wie unterscheiden sich Schularten nach Wiederholungsquoten? Das Balkendiagramm zeigt die Anteile der Schülerinnen und Schüler, die in verschiedenen Schultypen in Bayern Klassen wiederholen.
           </p>
-          <ul className="class-retention-mfe__story-text" style={COMMON_STYLES.bulletList}>
+          <ul className="bycs-mfe__story-text" style={COMMON_STYLES.bulletList}>
             {findings.map((finding, idx) => (
               <li key={idx} style={COMMON_STYLES.listItem} dangerouslySetInnerHTML={{ __html: finding }} />
             ))}
@@ -56,7 +56,7 @@ function RetentionViewComponent({
     hinweis: {
       label: 'Hinweis',
       content: (
-        <p className="class-retention-mfe__story-text class-retention-mfe__story-text--italic">
+        <p className="bycs-mfe__story-text bycs-mfe__story-text--italic">
           Betroffene Kinder erleben häufiger Leistungsängste, geringeres Selbstvertrauen sowie ein erhöhtes Risiko für Schulabbrüche. Hohe Wiederholungsquoten können daher ein Hinweis darauf sein, dass bestehende Leistungsanforderungen nicht ausreichend durch präventive Förderung, individualisierte Unterstützung und adaptive Lernangebote abgefedert werden.
         </p>
       ),
@@ -65,28 +65,28 @@ function RetentionViewComponent({
 
   return (
     <>
-      <section className="class-retention-mfe__explorer-layout">
-        <div className="class-retention-mfe__explorer-left">
+      <section className="bycs-mfe__explorer-layout">
+        <div className="bycs-mfe__explorer-left">
           {/* Chart */}
-          <div className="class-retention-mfe__chart-card">
-            <div className="class-retention-mfe__card-heading"></div>
+          <div className="bycs-mfe__chart-card">
+            <div className="bycs-mfe__card-heading"></div>
 
-            <div className="class-retention-mfe__controls-section">
+            <div className="bycs-mfe__controls-section">
               <YearSelect selectedYear={selectedYear} onYearChange={onYearChange} />
             </div>
 
-            <div className="class-retention-mfe__chart-frame">
+            <div className="bycs-mfe__chart-frame">
               <BarPlot data={stats.bySchoolType} year={selectedYear} />
             </div>
 
             {/* Legend for school types */}
-            <div className="class-retention-mfe__chart-legend">
-              <div className="class-retention-mfe__legend-label">Schularten</div>
-              <ul className="class-retention-mfe__legend-list">
+            <div className="bycs-mfe__chart-legend">
+              <div className="bycs-mfe__legend-label">Schularten</div>
+              <ul className="bycs-mfe__legend-list">
                 {SCHOOL_TYPES.map((schoolType: SchoolType) => (
                   <li key={schoolType}>
                     <span
-                      className="class-retention-mfe__legend-swatch"
+                      className="bycs-mfe__legend-swatch"
                       style={{ backgroundColor: SCHOOL_TYPE_COLORS[schoolType] }}
                     />
                     {schoolType} ({SCHOOL_TYPE_LABELS[schoolType]})
@@ -97,18 +97,18 @@ function RetentionViewComponent({
           </div>
         </div>
 
-        <div className="class-retention-mfe__explorer-right">
+        <div className="bycs-mfe__explorer-right">
           <InterpretationBox tabs={interpretationTabs} defaultTab="befund" />
         </div>
       </section>
 
-      <section className="class-retention-mfe__stats-section">
-        <h3 className="class-retention-mfe__stats-header">Trend im Vergleich zum Vorjahr</h3>
-        <div className="class-retention-mfe__stats-row" aria-label="Veränderungen zum Vorjahr">
+      <section className="bycs-mfe__stats-section">
+        <h3 className="bycs-mfe__stats-header">Trend im Vergleich zum Vorjahr</h3>
+        <div className="bycs-mfe__stats-row" aria-label="Veränderungen zum Vorjahr">
           {yoyChanges.map(({ type, change }) => (
-            <section key={type} className="class-retention-mfe__stat-card">
-              <span className="class-retention-mfe__stat-type">{type}</span>
-              <strong className={change === null ? '' : change > 0 ? 'class-retention-mfe__stat-increase' : change < 0 ? 'class-retention-mfe__stat-decrease' : ''}>
+            <section key={type} className="bycs-mfe__stat-card">
+              <span className="bycs-mfe__stat-type">{type}</span>
+              <strong className={change === null ? '' : change > 0 ? 'bycs-mfe__stat-increase' : change < 0 ? 'bycs-mfe__stat-decrease' : ''}>
                 {change === null ? 'N/A' : `${change > 0 ? '+' : ''}${change}%`}
               </strong>
             </section>

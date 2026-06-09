@@ -39,7 +39,7 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
   return (
     <svg
       viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
-      className="class-retention-mfe__chart"
+      className="bycs-mfe__chart"
       role="img"
       aria-label={`Balkendiagramm der Wiederholungsquoten für ${year}`}
     >
@@ -53,13 +53,13 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
               x2={x}
               y1={CHART_PADDING.top}
               y2={CHART_HEIGHT - CHART_PADDING.bottom}
-              className="class-retention-mfe__grid-line"
+              className="bycs-mfe__grid-line"
             />
             <text
               x={x}
               y={CHART_HEIGHT - CHART_PADDING.bottom + 24}
               textAnchor="middle"
-              className="class-retention-mfe__axis-label"
+              className="bycs-mfe__axis-label"
             >
               {tick}%
             </text>
@@ -73,14 +73,14 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
         x2={CHART_WIDTH - CHART_PADDING.right}
         y1={CHART_HEIGHT - CHART_PADDING.bottom}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
       <line
         x1={CHART_PADDING.left}
         x2={CHART_PADDING.left}
         y1={CHART_PADDING.top}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
 
       {/* Axis labels */}
@@ -88,7 +88,7 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
         x={CHART_WIDTH / 2}
         y={CHART_HEIGHT - 10}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
         Wiederholungsquote (%) im Jahr {year}
@@ -97,7 +97,7 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
         x={15}
         y={CHART_HEIGHT / 2}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         transform={`rotate(-90 15 ${CHART_HEIGHT / 2})`}
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
@@ -123,7 +123,7 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
               x={CHART_PADDING.left - 10}
               y={y + barHeight / 2 + 5}
               textAnchor="end"
-              className="class-retention-mfe__axis-label"
+              className="bycs-mfe__axis-label"
               style={{ fontSize: '18px', fontWeight: 600 }}
             >
               {item.type}
@@ -131,7 +131,7 @@ function BarPlotComponent({ data, year, maxPercent: customMaxPercent }: BarPlotP
             <text
               x={CHART_PADDING.left + width + 10}
               y={y + barHeight / 2 + 5}
-              className="class-retention-mfe__bar-label"
+              className="bycs-mfe__bar-label"
               style={{ fontSize: '14px', fontWeight: 600 }}
             >
               {formatPercent(item.percent)}

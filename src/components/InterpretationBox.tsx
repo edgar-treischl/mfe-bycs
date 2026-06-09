@@ -24,17 +24,17 @@ function InterpretationBoxComponent({
   const [activeTab, setActiveTab] = useState<TabKey>(initialTab)
 
   return (
-    <div className="class-retention-mfe__story-card class-retention-mfe__story-card--tall">
-      <div className="class-retention-mfe__story-header">
-        <h3 className="class-retention-mfe__story-heading">{title}</h3>
+    <div className="bycs-mfe__story-card bycs-mfe__story-card--tall">
+      <div className="bycs-mfe__story-header">
+        <h3 className="bycs-mfe__story-heading">{title}</h3>
       </div>
       
       {/* Tab Navigation */}
-      <div className="class-retention-mfe__story-tabs">
+      <div className="bycs-mfe__story-tabs">
         {tabKeys.map((tab) => (
           <button
             key={tab}
-            className={`class-retention-mfe__story-tab ${activeTab === tab ? 'class-retention-mfe__story-tab--active' : ''}`}
+            className={`bycs-mfe__story-tab ${activeTab === tab ? 'bycs-mfe__story-tab--active' : ''}`}
             onClick={() => setActiveTab(tab)}
             type="button"
           >
@@ -43,7 +43,7 @@ function InterpretationBoxComponent({
         ))}
       </div>
       
-      <div className="class-retention-mfe__story-content">
+      <div className="bycs-mfe__story-content">
         {tabs[activeTab].content}
       </div>
     </div>

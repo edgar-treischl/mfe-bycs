@@ -19,10 +19,10 @@ export const SEX_INTERPRETATION: InterpretationContent = {
     label: 'Befund',
     content: (
       <div>
-        <p className="class-retention-mfe__story-text">
+        <p className="bycs-mfe__story-text">
           Wie unterscheiden sich Wiederholungsquoten zwischen Jungen und Mädchen? Das Diagramm zeigt die Geschlechterverteilung bei Wiederholungen, aufgeschlüsselt nach Schulart. 
         </p>
-        <ul className="class-retention-mfe__story-text" style={COMMON_STYLES.bulletList}>
+        <ul className="bycs-mfe__story-text" style={COMMON_STYLES.bulletList}>
           <li style={COMMON_STYLES.listItem}>
             <strong>Jungen haben durchgehend höhere Wiederholungsquoten</strong> als Mädchen in allen Schultypen im Schuljahr 2024/25.
           </li>
@@ -36,7 +36,7 @@ export const SEX_INTERPRETATION: InterpretationContent = {
   hinweis: {
     label: 'Hinweis',
     content: (
-      <p className="class-retention-mfe__story-text class-retention-mfe__story-text--italic">
+      <p className="bycs-mfe__story-text bycs-mfe__story-text--italic">
         Dies deutet darauf hin, dass Jungen bei Leistungsanforderungen in der Regel stärker hinter Erwartungen zurückbleiben. Die Gründe können vielfältig sein: unterschiedliche Lernstile, unterschiedliche Entwicklungstempo oder möglicherweise auch Unterschiede in der Unterrichtsunterstützung. Diese Befunde decken sich auch mit unterschiedlichen Studien die den Bildungserfolg von Jungen in das Zentrum rücken.
       </p>
     ),
@@ -51,10 +51,10 @@ export const MIGRATION_INTERPRETATION: InterpretationContent = {
     label: 'Befund',
     content: (
       <div>
-        <p className="class-retention-mfe__story-text">
+        <p className="bycs-mfe__story-text">
           Wie unterscheiden sich Wiederholungsquoten zwischen deutschen und nicht-deutschen Schülerinnen und Schülern? Die Abbildung zeigt die Verteilung von Wiederholungen nach ethnischer Herkunft und Schulart.
         </p>
-        <ul className="class-retention-mfe__story-text" style={COMMON_STYLES.bulletList}>
+        <ul className="bycs-mfe__story-text" style={COMMON_STYLES.bulletList}>
           <li style={COMMON_STYLES.listItem}>
             Deutsche Kinder haben <strong>fast durchgehend höhere Wiederholungsquoten</strong> als Kinder mit Migrationshintergrund.
           </li>
@@ -68,7 +68,7 @@ export const MIGRATION_INTERPRETATION: InterpretationContent = {
   hinweis: {
     label: 'Hinweis',
     content: (
-      <p className="class-retention-mfe__story-text class-retention-mfe__story-text--italic">
+      <p className="bycs-mfe__story-text bycs-mfe__story-text--italic">
         Die unterschiedlichen Wiederholungsquoten zwischen deutschen und nicht-deutschen Schülerinnen und Schülern reflektieren komplexe Wechselwirkungen zwischen Herkunft, Schultyp, Sprachkompetenz und Bildungschancen. Diese Daten unterstreichen die Bedeutung von sprachlicher Unterstützung und kulturell sensiblen Lernumgebungen, besonders in frühen Schuljahren.
       </p>
     ),

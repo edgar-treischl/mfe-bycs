@@ -74,7 +74,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
   return (
     <svg
       viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
-      className="class-retention-mfe__chart"
+      className="bycs-mfe__chart"
       role="img"
       aria-label="Liniendiagramm der Klassenwiederholungen im Zeitverlauf nach Schultyp"
     >
@@ -88,12 +88,12 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
               x2={CHART_WIDTH - CHART_PADDING.right}
               y1={y}
               y2={y}
-              className="class-retention-mfe__grid-line"
+              className="bycs-mfe__grid-line"
             />
             <text
               x={CHART_PADDING.left - 10}
               y={y + 4}
-              className="class-retention-mfe__axis-label class-retention-mfe__axis-label--y"
+              className="bycs-mfe__axis-label bycs-mfe__axis-label--y"
             >
               {formatNumber(tick)}
             </text>
@@ -111,7 +111,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
             x={x}
             y={CHART_HEIGHT - CHART_PADDING.bottom + 24}
             textAnchor="middle"
-            className="class-retention-mfe__axis-label"
+            className="bycs-mfe__axis-label"
           >
             {schoolYear}
           </text>
@@ -124,14 +124,14 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
         x2={CHART_WIDTH - CHART_PADDING.right}
         y1={CHART_HEIGHT - CHART_PADDING.bottom}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
       <line
         x1={CHART_PADDING.left}
         x2={CHART_PADDING.left}
         y1={CHART_PADDING.top}
         y2={CHART_HEIGHT - CHART_PADDING.bottom}
-        className="class-retention-mfe__axis-line"
+        className="bycs-mfe__axis-line"
       />
 
       {/* Axis labels */}
@@ -139,7 +139,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
         x={CHART_WIDTH / 2}
         y={CHART_HEIGHT - 10}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
         Schuljahr {minYear}/{maxYear}
@@ -148,7 +148,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
         x={15}
         y={CHART_HEIGHT / 2}
         textAnchor="middle"
-        className="class-retention-mfe__axis-title"
+        className="bycs-mfe__axis-title"
         transform={`rotate(-90 15 ${CHART_HEIGHT / 2})`}
         style={{ fontSize: '16px', fontWeight: 500 }}
       >
@@ -229,14 +229,14 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
               fill="white"
               stroke={SCHOOL_TYPE_COLORS[hoveredPoint.schoolType]}
               strokeWidth={2}
-              className="class-retention-mfe__tooltip-bg"
+              className="bycs-mfe__tooltip-bg"
             />
             {/* Tooltip text - School Type */}
             <text
               x={hoveredPoint.x}
               y={tooltipY + 16}
               textAnchor="middle"
-              className="class-retention-mfe__tooltip-text class-retention-mfe__tooltip-label"
+              className="bycs-mfe__tooltip-text bycs-mfe__tooltip-label"
               style={{ fontSize: '14px', fontWeight: 500 }}
             >
               {hoveredPoint.schoolType}
@@ -246,7 +246,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
               x={hoveredPoint.x}
               y={tooltipY + 28}
               textAnchor="middle"
-              className="class-retention-mfe__tooltip-text class-retention-mfe__tooltip-label"
+              className="bycs-mfe__tooltip-text bycs-mfe__tooltip-label"
               style={{ fontSize: '12px', fill: '#666', fontWeight: 400 }}
             >
               {hoveredPoint.syear}
@@ -256,7 +256,7 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
               x={hoveredPoint.x}
               y={tooltipY + 42}
               textAnchor="middle"
-              className="class-retention-mfe__tooltip-text"
+              className="bycs-mfe__tooltip-text"
               style={{ fontSize: '14px', fontWeight: 600 }}
             >
               {formatNumber(hoveredPoint.value)}
@@ -273,13 +273,13 @@ function LineChartComponent({ data, minYear, maxYear }: LineChartProps) {
  */
 function LineChartLegendComponent() {
   return (
-    <div className="class-retention-mfe__chart-legend">
-      <div className="class-retention-mfe__legend-label">Schultyp</div>
-      <ul className="class-retention-mfe__legend-list">
+    <div className="bycs-mfe__chart-legend">
+      <div className="bycs-mfe__legend-label">Schultyp</div>
+      <ul className="bycs-mfe__legend-list">
         {SCHOOL_TYPES.map((schoolType) => (
           <li key={schoolType}>
             <span
-              className="class-retention-mfe__legend-swatch"
+              className="bycs-mfe__legend-swatch"
               style={{ backgroundColor: SCHOOL_TYPE_COLORS[schoolType] }}
             />
             {schoolType}

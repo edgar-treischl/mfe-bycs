@@ -10,9 +10,9 @@ export function HelpPopup({ title, content }: HelpPopupProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="help-popup-container">
+    <div className="bycs-mfe__help-popup-container">
       <button
-        className="help-icon-button"
+        className="bycs-mfe__help-icon-button"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Hilfe anzeigen"
         type="button"
@@ -22,7 +22,7 @@ export function HelpPopup({ title, content }: HelpPopupProps) {
           height="20"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
-          className="help-icon-svg"
+          className="bycs-mfe__help-icon-svg"
         >
           <circle
             cx="10"
@@ -39,7 +39,7 @@ export function HelpPopup({ title, content }: HelpPopupProps) {
             fontSize="10"
             fontWeight="600"
             fill="currentColor"
-            className="help-icon-text"
+            className="bycs-mfe__help-icon-text"
           >
             ?
           </text>
@@ -48,12 +48,12 @@ export function HelpPopup({ title, content }: HelpPopupProps) {
 
       {isOpen && (
         <>
-          <div className="help-popup-overlay" onClick={() => setIsOpen(false)} />
-          <div className="help-popup-dialog">
-            <div className="help-popup-header">
+          <div className="bycs-mfe__help-popup-overlay" onClick={() => setIsOpen(false)} />
+          <div className="bycs-mfe__help-popup-dialog">
+            <div className="bycs-mfe__help-popup-header">
               <h3>{title}</h3>
               <button
-                className="help-popup-close"
+                className="bycs-mfe__help-popup-close"
                 onClick={() => setIsOpen(false)}
                 aria-label="Schließen"
                 type="button"
@@ -61,7 +61,7 @@ export function HelpPopup({ title, content }: HelpPopupProps) {
                 ×
               </button>
             </div>
-            <div className="help-popup-content">{content}</div>
+            <div className="bycs-mfe__help-popup-content">{content}</div>
           </div>
         </>
       )}

@@ -35,18 +35,18 @@ export const VIEW_METADATA: Record<
  * Using BEM-like naming convention
  */
 export const CLASS_NAMES = {
-  root: 'class-retention-mfe',
-  panel: 'class-retention-mfe__panel',
-  viewSwitch: 'class-retention-mfe__view-switch',
-  viewTab: 'class-retention-mfe__view-tab',
-  viewTabActive: 'class-retention-mfe__view-tab--active',
-  panelHeader: 'class-retention-mfe__panel-header',
-  explorerLayout: 'class-retention-mfe__explorer-layout',
-  explorerLeft: 'class-retention-mfe__explorer-left',
-  chartCard: 'class-retention-mfe__chart-card',
-  cardHeading: 'class-retention-mfe__card-heading',
-  controlsSection: 'class-retention-mfe__controls-section',
-  controlGroup: 'class-retention-mfe__control-group',
+  root: 'bycs-mfe',
+  panel: 'bycs-mfe__panel',
+  viewSwitch: 'bycs-mfe__view-switch',
+  viewTab: 'bycs-mfe__view-tab',
+  viewTabActive: 'bycs-mfe__view-tab--active',
+  panelHeader: 'bycs-mfe__panel-header',
+  explorerLayout: 'bycs-mfe__explorer-layout',
+  explorerLeft: 'bycs-mfe__explorer-left',
+  chartCard: 'bycs-mfe__chart-card',
+  cardHeading: 'bycs-mfe__card-heading',
+  controlsSection: 'bycs-mfe__controls-section',
+  controlGroup: 'bycs-mfe__control-group',
 } as const
 
 /**

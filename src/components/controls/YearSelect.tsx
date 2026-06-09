@@ -21,18 +21,18 @@ function YearSelectComponent({
   label = 'Wählen Sie ein Schuljahr:',
 }: YearSelectProps) {
   return (
-    <div className="class-retention-mfe__control-group">
-      <div className="class-retention-mfe__control-label">
+    <div className="bycs-mfe__control-group">
+      <div className="bycs-mfe__control-label">
         <SelectIcon />
         <span>{label}</span>
       </div>
-      <div className="class-retention-mfe__control-pair">
-        <label htmlFor="year-select" className="class-retention-mfe__control-short-label">
+      <div className="bycs-mfe__control-pair">
+        <label htmlFor="year-select" className="bycs-mfe__control-short-label">
           Schuljahr
         </label>
         <select
           id="year-select"
-          className="class-retention-mfe__control-select"
+          className="bycs-mfe__control-select"
           value={selectedYear}
           onChange={(e) => onYearChange(e.target.value as SchoolYear)}
         >

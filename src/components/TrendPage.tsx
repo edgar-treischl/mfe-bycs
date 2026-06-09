@@ -40,10 +40,10 @@ function TrendViewComponent() {
       label: 'Befund',
       content: (
         <div>
-          <p className="class-retention-mfe__story-text">
+          <p className="bycs-mfe__story-text">
             Das Liniendiagramm zeigt die jährlichen Wiederholungsquoten für verschiedene Schultypen im Zeitverlauf. Die Pandemie hat dabei zu signifikanten Verschiebungen geführt.
           </p>
-          <ul className="class-retention-mfe__story-text" style={{ listStyle: 'disc', paddingLeft: '1.5rem', margin: 0, marginTop: '1.5rem' }}>
+          <ul className="bycs-mfe__story-text" style={{ listStyle: 'disc', paddingLeft: '1.5rem', margin: 0, marginTop: '1.5rem' }}>
             <li style={{ marginBottom: '0.5rem' }}>
               <strong>Relativ stabiler Trend:</strong> Die Wiederholungsquoten waren bis zur Pandemie nach Schularten relativ konsistent.
             </li>
@@ -62,7 +62,7 @@ function TrendViewComponent() {
     hinweis: {
       label: 'Hinweis',
       content: (
-        <p className="class-retention-mfe__story-text class-retention-mfe__story-text--italic">
+        <p className="bycs-mfe__story-text bycs-mfe__story-text--italic">
           Die deutlichen Schwankungen im Zeitverlauf spiegeln die Auswirkungen von Schulpolitik und Kriseneingriffen wider. Der Zeitverlauf zeigt, dass die Wiederholungsquote auch von institutionellen Faktoren der Bildungspolitik abhängen, nicht nur von Leistungsunterschieden.
         </p>
       ),
@@ -71,26 +71,26 @@ function TrendViewComponent() {
 
   return (
     <>
-      <section className="class-retention-mfe__dataset-layout">
-        <div className="class-retention-mfe__dataset-left">
-          <div className="class-retention-mfe__chart-card">
-            <div className="class-retention-mfe__card-heading"></div>
+      <section className="bycs-mfe__dataset-layout">
+        <div className="bycs-mfe__dataset-left">
+          <div className="bycs-mfe__chart-card">
+            <div className="bycs-mfe__card-heading"></div>
 
             {/* Year range controls */}
-            <div className="class-retention-mfe__controls-section">
-              <div className="class-retention-mfe__control-group">
-                <div className="class-retention-mfe__control-label">
+            <div className="bycs-mfe__controls-section">
+              <div className="bycs-mfe__control-group">
+                <div className="bycs-mfe__control-label">
                   <SelectIcon />
                   <span>Wählen Sie einen Zeitraum:</span>
                 </div>
-                <div className="class-retention-mfe__control-pairs">
-                  <div className="class-retention-mfe__control-pair">
-                    <label htmlFor="min-year-select" className="class-retention-mfe__control-short-label">
+                <div className="bycs-mfe__control-pairs">
+                  <div className="bycs-mfe__control-pair">
+                    <label htmlFor="min-year-select" className="bycs-mfe__control-short-label">
                       Startjahr
                     </label>
                     <select
                       id="min-year-select"
-                      className={`class-retention-mfe__control-select ${highlightedSelect === 'min' ? 'class-retention-mfe__control-select--active' : ''}`}
+                      className={`bycs-mfe__control-select ${highlightedSelect === 'min' ? 'bycs-mfe__control-select--active' : ''}`}
                       value={minYear}
                       onChange={(e) => handleSelectChange('min', parseInt(e.target.value))}
                     >
@@ -102,13 +102,13 @@ function TrendViewComponent() {
                     </select>
                   </div>
 
-                  <div className="class-retention-mfe__control-pair">
-                    <label htmlFor="max-year-select" className="class-retention-mfe__control-short-label">
+                  <div className="bycs-mfe__control-pair">
+                    <label htmlFor="max-year-select" className="bycs-mfe__control-short-label">
                       Endjahr
                     </label>
                     <select
                       id="max-year-select"
-                      className={`class-retention-mfe__control-select ${highlightedSelect === 'max' ? 'class-retention-mfe__control-select--active' : ''}`}
+                      className={`bycs-mfe__control-select ${highlightedSelect === 'max' ? 'bycs-mfe__control-select--active' : ''}`}
                       value={maxYear}
                       onChange={(e) => handleSelectChange('max', parseInt(e.target.value))}
                     >
@@ -123,14 +123,14 @@ function TrendViewComponent() {
               </div>
             </div>
 
-            <div className="class-retention-mfe__chart-frame">
+            <div className="bycs-mfe__chart-frame">
               <LineChart data={filteredTimeSeriesData} minYear={minYear} maxYear={maxYear} />
               <LineChartLegend />
             </div>
           </div>
         </div>
 
-        <div className="class-retention-mfe__dataset-right">
+        <div className="bycs-mfe__dataset-right">
           <InterpretationBox tabs={interpretationTabs} defaultTab="befund" title="Interpretation" />
         </div>
       </section>
