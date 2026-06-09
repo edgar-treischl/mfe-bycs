@@ -1,165 +1,129 @@
-# Copilot Instructions for class-retention-mfe
-
-## Project Overview
-
-This is a **Module Federation micro-frontend (MFE)** built with React + TypeScript + Vite. It visualizes class retention data (students repeating grades) across different German school types over multiple years (2020-2024). The app is designed to be consumed as a remote module by other applications using Webpack Module Federation.
+# Copilot Instructions for ByCS MFE
 
 ## Build, Test, and Lint Commands
 
+### Development
 ```bash
-# Development server (runs on port 5174 with CORS enabled)
 yarn dev
+# Starts Vite dev server at http://localhost:5174
+```
 
-# Production build (outputs to ./dist)
+### Build
+```bash
 yarn build
+# Runs TypeScript type checking (tsc -b), then builds with Vite
+# Output: dist/ folder (configured for GitHub Pages at /mfe-bycs/)
+```
 
-# Lint all files
+### Linting
+```bash
 yarn lint
+# ESLint check across entire codebase
 
-# Preview production build locally (port 5174)
+yarn lint:fix
+# ESLint with auto-fix for style issues
+```
+
+### Preview
+```bash
 yarn preview
+# Preview production build locally at port 5174
 ```
 
-**Note:** There are no tests configured in this project.
+**Note:** No test runner is configured. The project is a presentation layer without automated tests.
 
-## Module Federation Configuration
+## Architecture Overview
 
-This MFE exposes its main component for consumption by host applications:
+This is a **React Module Federation micro-frontend (MFE)** built with Vite. It visualizes class retention data for German schools (Klassenwiederholung).
 
-- **Remote name:** `class-retention-mfe`
-- **Exposed module:** `./AnalyticsApp` → `./src/App.tsx`
-- **Entry point:** `remoteEntry.js` (generated in dist during build)
-- **Shared dependencies:** `react`, `react-dom`
+### Key Structure
+- **Entry:** `src/main.tsx` mounts `App` component
+- **Module Federation:** Configured in `vite.config.ts`
+  - Exposes: `./BycsApp` → `src/App.tsx`
+  - Shared: React and React-DOM
+  - Built for remote consumption at `/dist/remoteEntry.js`
+  - Deployed to GitHub Pages path: `/mfe-bycs/`
 
-### Important Configuration Details
+### Application Flow
+1. **App.tsx** - Main component managing view switching and year selection
+2. **Views** - Each view is a separate page component:
+   - `HeroPage` - Homepage/welcome view
+   - `RetentionPage` - Class retention by school year
+   - `TrendPage` - Retention trends over time
+   - `SexPage` - Retention split by gender
+   - `MigrationPage` - Retention by migration background
+   - `InfoPage` - About the application
+3. **Components** - Reusable UI components in `src/components/`
+   - `charts/` - Data visualization (BarPlot, LineChart, StackedBarChart)
+   - `controls/` - UI controls (YearSelect, etc.)
+   - Data components are stateful and handle their own data loading
 
-- **Base path is set to `/class-retention-mfe/`** in `vite.config.ts` for GitHub Pages deployment
-- If deploying elsewhere or consuming from a different URL, update the `base` config accordingly
-- The dev and preview servers run on **port 5174** with `host: true` and `cors: true` to enable cross-origin module loading
-- Build is configured with `cssCodeSplit: false` and `minify: false` for predictable output in federation context
+### Data & Config
+- **retention.ts** - School year definitions and data types
+- **config/** - Application configuration
+  - `chartConfig.ts` - Chart rendering options
+  - `interpretationContent.tsx` - Content for data interpretation cards
+- **utils/** - Helper functions
+  - `yearCalculations.ts` - Date/year calculations
+  - `dataValidation.ts` - Input validation
+  - `findingsGenerator.ts` - Dynamic insight generation
 
-## Architecture
-
-### Component Structure
-
-```
-src/
-├── App.tsx              # Root component, manages view state and year/school type selection
-├── main.tsx             # Entry point, adds body/root classes for styling
-├── retention.ts         # Data layer: types, filtering, calculations, constants
-├── components/
-│   ├── ExplorerView.tsx # Horizontal bar chart showing retention rates by school type
-│   ├── DatasetView.tsx  # Line chart showing retention trends over time
-│   └── InfoView.tsx     # Information panel with dataset summary and description
-└── data/
-    └── retention.json   # Source data (German school retention statistics)
-```
-
-### Data Flow
-
-1. **retention.ts** is the single source of truth for:
-   - All TypeScript types (`RetentionDatum`, `SchoolType`, `SchoolYear`, etc.)
-   - Data transformation (raw JSON → validated `RetentionDatum[]`)
-   - Filtering logic (`filterRetentionBySchoolType()`, `getDataForYear()`, `getTimeSeriesData()`)
-   - Statistical calculations (`buildBarChartStats()`, `getYearOverYearChange()`)
-   - Chart configuration constants (`CHART_WIDTH`, `CHART_HEIGHT`, `CHART_PADDING`, `SCHOOL_TYPE_COLORS`)
-   - Formatting utilities (`formatPercent()`, `formatNumber()`)
-   - Dataset metadata (`DATASET_SUMMARY`, `SCHOOL_YEARS`)
-
-2. **App.tsx** orchestrates:
-   - View switching (Retention Rates vs Trends Over Time vs Data Info)
-   - School year selection
-   - School type filtering
-   - All state is lifted to App and passed down as props
-
-3. **Components are controlled and stateless:**
-   - `ExplorerView`, `DatasetView`, and `InfoView` receive all data via props
-   - No local state for data manipulation
-   - Chart rendering is done with pure SVG (no external charting library)
-
-### Styling Approach
-
-- Uses vanilla CSS with scoped class names
-- Body gets `.penguins-app-body` class in `main.tsx` (legacy class name retained for consistency)
-- Component styles in `App.css`, global styles in `index.css`
-- CSS classes follow BEM-like naming (e.g., `.panel-header`, `.view-tab.is-active`)
+### Error Handling
+- `ErrorBoundary.tsx` wraps all major views to catch React errors
+- All error boundaries log and display graceful fallbacks
 
 ## Key Conventions
 
-### Type Safety
+### Code Style
+- **Formatter:** Prettier with these settings:
+  - No semicolons
+  - Single quotes
+  - 2-space indentation
+  - Trailing commas (ES5)
+  - Line width: 100 characters
+  - Arrow functions always get parentheses
+- **Linter:** ESLint with TypeScript, React Hooks, and React Refresh plugins
 
-- All retention data types, school types, and school years are defined in `retention.ts`
-- Use the exported types: `RetentionDatum`, `SchoolType`, `SchoolTypeFilter`, `SchoolYear`
-- Avoid inline type definitions; import from `retention.ts` for consistency
+### Naming & Structure
+- **CSS:** BEM-like naming with prefix `class-retention-mfe__`
+  - Example: `class-retention-mfe__panel`, `class-retention-mfe__view-tab--active`
+  - All styling is scoped through this prefix to avoid conflicts
+- **Constants:** Centralized in `src/constants.ts`
+  - `VIEW_OPTIONS` - Navigation tabs
+  - `VIEW_METADATA` - Page titles (German labels)
+  - `CLASS_NAMES` - All CSS class selectors
+  - `ARIA_LABELS` - Accessibility labels
+- **Types:** Prefer `as const` for literal types (see retention.ts for SCHOOL_YEARS)
 
-### Data Filtering Pattern
+### Language & Accessibility
+- **User-facing labels:** German (de-DE)
+- **Accessibility:** ARIA labels required for interactive elements
+- **Focus styles:** Built into CSS (consider keyboard navigation)
 
-- All data access happens through functions in `retention.ts`:
-  - `getDataForYear(year)` - Get all school types for a specific year
-  - `filterRetentionBySchoolType(filter)` - Filter by school type
-  - `getTimeSeriesData()` - Get time series grouped by school type
-  - `buildBarChartStats(data)` - Calculate statistics for bar chart display
-  - `getYearOverYearChange(year1, year2)` - Calculate percentage point changes between years
-  - `formatPercent(value)` - Format numbers as percentages
-  - `formatNumber(value)` - Format large numbers with thousand separators
-- These functions return new arrays/objects; original data is immutable
-- Use these functions rather than filtering `RETENTION_DATA` directly
-- `DATASET_SUMMARY` provides metadata: total years, total retentions, school types, year range, latest year
+### Component Patterns
+- **Functional components only** (React 19)
+- **Hooks for state:** useState, no external state management
+- **Props:** Strongly typed with TypeScript interfaces
+- **Data fetching:** Typically done in `useEffect` in component or loaded from config
+- **Chart components:** Accept data as props, use config objects for rendering options
 
-### Chart/Visualization Constants
+## Design Consistency
 
-- Chart dimensions, padding, and colors are exported from `retention.ts`
-- Keep all visualization-related constants centralized in `retention.ts` (not in component files)
-- Color scheme for school types is defined in `SCHOOL_TYPE_COLORS`:
-  - Grundschulen: blue (#3b82f6)
-  - Mittelschulen: red (#ef4444)
-  - Realschulen: green (#10b981)
-  - Gymnasien: amber (#f59e0b)
-  - Gesamtschulen: purple (#8b5cf6)
-
-### Data Story and Context
-
-The data represents grade retention (students repeating a grade) in German schools:
-
-- **School types** (from primary to advanced): Grundschulen, Mittelschulen, Realschulen, Gymnasien, Gesamtschulen
-- **Key insight**: Realschulen show the highest retention rates (~50%), followed by Gymnasien (~30-35%)
-- **COVID impact**: Data from 2020/21 shows unusual patterns due to pandemic policies
-- **Year-over-year changes**: Use `getYearOverYearChange()` to calculate percentage point differences
-
-### Module Federation Integration
-
-When integrating this MFE into a host application:
-
-1. Host needs to load `remoteEntry.js` from the deployed URL
-2. Import the component: `const App = React.lazy(() => import('class-retention-mfe/AnalyticsApp'))`
-3. Ensure React versions match between host and remote (currently using React 19.2.5)
-4. Host must provide a container div for the MFE to mount into
-
-### ESLint Configuration
-
-- Uses flat config format (`eslint.config.js`)
-- Configured for TypeScript + React with hooks and react-refresh support
-- The `dist/` folder is ignored globally
-- Lint errors should be fixed before committing
-
-## Chart Implementation
-
-Both views use **pure SVG** with manual scale calculations:
-
-- **ExplorerView**: Horizontal bar chart with bars positioned using `xScale()` and `yScale()` functions
-- **DatasetView**: Line chart with SVG `<path>` elements and `<circle>` markers
-- Grid lines, axes, and labels are all SVG primitives
-- No external charting libraries (D3, Chart.js, etc.) are used
-
-When modifying charts:
-- Update scale functions to ensure data fits within `CHART_PADDING` bounds
-- Maintain axis labels and grid lines for readability
-- Test with different year selections to ensure layout remains consistent
+The app implements a **modern public-sector/educational design system**:
+- Primary color (blue): `#264D7F` (class-retention-accent in CSS)
+- Clean, minimal interface prioritizing usability
+- Generous whitespace and accessible typography
+- Refer to `bycs-design.md` for detailed design tokens and patterns
 
 ## Deployment
 
-The project deploys to **GitHub Pages** via `.github/workflows/deploy.yml`:
-- Triggers on pushes to `main` branch
-- Uses Yarn with frozen lockfile
-- Builds and uploads to GitHub Pages
-- Deployed URL includes `/class-retention-mfe/` base path
+- **Base path:** `/mfe-bycs/` (set in vite.config.ts, critical for GitHub Pages)
+- **Output:** `dist/remoteEntry.js` for module federation consumption
+- **CSS Code Split:** Disabled (`cssCodeSplit: false`)
+- **Build target:** `esnext` with no minification
+
+## TypeScript Configuration
+
+- Separate configs: `tsconfig.app.json` and `tsconfig.node.json`
+- Referenced from main `tsconfig.json`
+- Use strict mode for type safety
