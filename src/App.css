@@ -93,6 +93,17 @@
   outline-offset: 4px;
 }
 
+.class-retention-mfe__view-tab--active {
+  background: var(--class-retention-primary-light);
+  color: var(--class-retention-primary);
+  border-bottom: 3px solid var(--class-retention-primary);
+  font-weight: 600;
+  box-shadow: none;
+  margin-bottom: -2px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  padding: 10px 16px;
+}
+
 /* ==========================================
    3. BUTTONS & INTERACTIVE ELEMENTS
    ========================================== */
